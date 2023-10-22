@@ -28,7 +28,6 @@ function App() {
         <Header />
         <main>
           <Outlet />
-          Todoo
         </main>
         <Footer />
       </div>

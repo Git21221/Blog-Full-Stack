@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import appwriteService from '../appwrite/configAppWrite'
 import { Container, PostCard } from '../components'
-import { useSearchParams } from 'react-router-dom'
+// import { useSearchParams } from 'react-router-dom'
 export default function Home() {
   const [posts, setPosts] = useState([]);
   useEffect(() => {
@@ -30,7 +30,7 @@ export default function Home() {
             <div className='flex flex-wrap'>
                 {posts.map((post) => (
                     <div key={post.$id} className='p-2 w-1/4'>
-                        <PostCard {...post} />
+                        <PostCard post={post} />
                     </div>
                 ))}
             </div>

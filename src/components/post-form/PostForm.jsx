@@ -8,9 +8,9 @@ import { useNavigate } from 'react-router-dom'
 function PostForm({ post }) {
   const { register, handleSubmit, watch, setValue, control, getValues } = useForm({
     defaultValues: {
-      title: post?.title || '',
-      slug: post?.slug || '',
-      content: post?.content || '',
+      title: post?.title || 'Hii All',
+      slug: post?.slug || 'hii-all',
+      content: post?.content || 'Test',
       status: post?.status || 'active',
     },
   });
@@ -19,30 +19,32 @@ function PostForm({ post }) {
   const userData = useSelector(state => state.auth.userData)
 
   const submit = async (data) => {
-    console.log(data);
+    // console.log(data);
     if (post) {
       let file = data.image[0] ? await appwriteService.uploadFile(data.image[0]) : null;
-      console.log(file.$id);
+      // console.log(file.$id);
 
       if (file) {
-        appwriteService.deleteFile(post.featuredimage);
+        appwriteService.deleteFile(post.featuredImage);
       }
 
       const dbPost = await appwriteService.updatePost(post.$id, {
         ...data,
-        featuredimage: file ? file.$id : undefined,
+        featuredImage: file ? file.$id : undefined,
       });
-
+      // console.log(post.featuredImage);
+      
       if (dbPost) {
         navigate(`/post/${dbPost.$id}`);
       }
     } else {
+      // console.log(userData.$id);
       const file = await appwriteService.uploadFile(data.image[0]);
 
       if (file) {
         const fileId = file.$id;
-        data.featuredimage = fileId;
-        const dbPost = await appwriteService.createPost({ ...data, userId: userData.$id });
+        data["featured-image"] = fileId;
+        const dbPost = await appwriteService.createPost({ ...data });
 
         if (dbPost) {
           navigate(`/post/${dbPost.$id}`);
@@ -94,17 +96,18 @@ function PostForm({ post }) {
           type="file"
           className="mb-4"
           accept="image/png, image/jpg, image/jpeg, image/gif"
-          {...register('image', { required: post })}
+          {...register('image', { required: !post })}
         />
         {post && (
           <div className="w-full mb-4">
             <img
-              src={appwriteService.getFilePreview(post.featuredimage)}
+              src={appwriteService.getFilePreview(post["featured-image"])}
               alt={post.title}
               className="rounded-lg"
             />
           </div>
         )}
+        {/* {console.log("filepreview", post["featured-image"])} */}
         <Select
           options={["active", "inactive"]}
           label="Status"
