@@ -12,7 +12,7 @@ export default function Post() {
 
     const userData = useSelector((state) => state.auth.userData);
 
-    const isAuthor = post && userData ? post.userId === userData.$id : false;
+    const isAuthor = post && userData.userData ? post["user-id"] === userData.userData.$id : false;
 
     useEffect(() => {
         if (slug) {
@@ -35,11 +35,11 @@ export default function Post() {
     return post ? (
         <div className="py-8">
             <Container>
-                <div className="w-full flex justify-center mb-4 relative border rounded-xl p-2">
+                <div className="w-full flex justify-center mb-4 relative border rounded-md p-2">
                     <img
                         src={appwriteService.getFilePreview(post["featured-image"])}
                         alt={post.title}
-                        className="rounded-xl"
+                        className="rounded-md"
                     />
 
                     {isAuthor && (

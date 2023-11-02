@@ -14,8 +14,7 @@ export class Service {
     this.bucket = new Storage(this.client)
   }
 
-  async createPost({ title, slug, content, "featured-image": featuredImage, status, "user-id": userId }) {
-    // if(!featuredImage) throw new Error("Missing 'featuredImage' attribute")
+  async createPost({ title, slug, content, "featured-image": featuredImage, status, "user-id": userId, userName }) {
     try {
       return await this.databases.createDocument(
         config.appWriteDatabaseId,
@@ -27,11 +26,11 @@ export class Service {
           'featured-image':featuredImage,
           status,
           "user-id": userId,
+          userName,
         }
       )
     } catch (error) {
       console.log("Appwrite service :: createPost :: error", error);
-      // return false;
     }
   }
 
@@ -123,7 +122,6 @@ export class Service {
   }
 
   getFilePreview(fileId) {
-    console.log(fileId);
     return this.bucket.getFilePreview(
       config.appWriteBucketId,
       fileId

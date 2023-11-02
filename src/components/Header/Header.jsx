@@ -38,20 +38,20 @@ function Header() {
   ]
 
   return (
-    <header className='py-3 shadow bg-gray-500'>
+    <header className='py-3 shadow-lg bg-gray-200 w-full rounded-md'>
       <Container>
-        <nav className='flex'>
+        <nav className='flex items-center justify-between max-w-5xl'>
           <div className="mr-4">
             <Link to='/'>
-              <Logo width='70px' />
+              <Logo />
             </Link>
           </div>
-          <ul className='flex ml-auto'>
+          <ul className='flex gap-2'>
             {navItems.map((item) =>
               item.active ? (
                 <li key={item.name}>
                   <button onClick={() => navigate(item.slug)}
-                  className='inline-bock px-6 py-2 duration-200 hover:bg-blue-100 rounded-full'>{item.name}</button>
+                  className='inline-bock px-6 py-2 duration-200 hover:bg-orange-400 rounded-full font-medium text-gray-700 hover:text-gray-100'>{item.name}</button>
                 </li>
               ) : null
             )}

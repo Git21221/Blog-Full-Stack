@@ -4,25 +4,27 @@ import { Button, Input, RTE, Select } from '../index'
 import appwriteService from '../../appwrite/configAppWrite'
 import { useSelector } from 'react-redux/es/hooks/useSelector'
 import { useNavigate } from 'react-router-dom'
+import { ID, Client, Account } from 'appwrite'
+import config from '../../config/config'
 
 function PostForm({ post }) {
   const { register, handleSubmit, watch, setValue, control, getValues } = useForm({
     defaultValues: {
-      title: post?.title || 'Hii All',
-      slug: post?.slug || 'hii-all',
-      content: post?.content || 'Test',
+      title: post?.title || '',
+      slug: post?.slug || '',
+      content: post?.content || '',
       status: post?.status || 'active',
     },
   });
 
   const navigate = useNavigate();
   const userData = useSelector(state => state.auth.userData)
+  // console.log(userData);
+
 
   const submit = async (data) => {
-    // console.log(data);
     if (post) {
       let file = data.image[0] ? await appwriteService.uploadFile(data.image[0]) : null;
-      // console.log(file.$id);
 
       if (file) {
         appwriteService.deleteFile(post.featuredImage);
@@ -32,20 +34,20 @@ function PostForm({ post }) {
         ...data,
         featuredImage: file ? file.$id : undefined,
       });
-      // console.log(post.featuredImage);
       
       if (dbPost) {
         navigate(`/post/${dbPost.$id}`);
       }
     } else {
-      // console.log(userData.$id);
       const file = await appwriteService.uploadFile(data.image[0]);
 
       if (file) {
         const fileId = file.$id;
         data["featured-image"] = fileId;
+        data["user-id"] = userData.userData.$id;
+        data.userName = userData.userData.name;
         const dbPost = await appwriteService.createPost({ ...data });
-
+        
         if (dbPost) {
           navigate(`/post/${dbPost.$id}`);
         }

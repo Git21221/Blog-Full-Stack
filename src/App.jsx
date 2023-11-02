@@ -23,8 +23,8 @@ function App() {
     .finally(() => setLoading(false))
   }, [])
   return !loading ? (
-    <div className='w-full flex flex-wrap items-center justify-center bg-slate-500'>
-      <div className='flex flex-col items-center justify-center'>
+    <div className='flex flex-wrap items-center justify-center bg-slate-100 '>
+      <div className='flex flex-col w-full'>
         <Header />
         <main>
           <Outlet />
