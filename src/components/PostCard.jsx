@@ -15,6 +15,7 @@ function PostCard({
 }) {
 
   const userData = useSelector(state => state.auth.userData)
+  console.log(post);
 
   return (
     // <Link to={`/post/${userData.userData.$id}`}>
@@ -23,7 +24,7 @@ function PostCard({
         <div className="user flex items-center justify-normal gap-3">
           <span className="userImage"><img src="https://filestore.community.support.microsoft.com/api/images/0ce956b2-9787-4756-a580-299568810730?upload=true" alt="" width='40px' /></span>
           <span className='userName text-base'>{post.userName}</span>
-          <span className="labels text-xs text-red-600">{userData.userData.labels[0]}</span>
+          <span className="labels text-xs text-red-600">{post.userLabel}</span>
         </div>
         <span className='follow text-sm'>+ Follow</span>
       </div>

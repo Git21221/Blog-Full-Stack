@@ -4,8 +4,7 @@ import { Button, Input, RTE, Select } from '../index'
 import appwriteService from '../../appwrite/configAppWrite'
 import { useSelector } from 'react-redux/es/hooks/useSelector'
 import { useNavigate } from 'react-router-dom'
-import { ID, Client, Account } from 'appwrite'
-import config from '../../config/config'
+
 
 function PostForm({ post }) {
   const { register, handleSubmit, watch, setValue, control, getValues } = useForm({
@@ -14,12 +13,13 @@ function PostForm({ post }) {
       slug: post?.slug || '',
       content: post?.content || '',
       status: post?.status || 'active',
+      
     },
   });
 
   const navigate = useNavigate();
   const userData = useSelector(state => state.auth.userData)
-  // console.log(userData);
+  console.log(userData);
 
 
   const submit = async (data) => {
@@ -46,6 +46,7 @@ function PostForm({ post }) {
         data["featured-image"] = fileId;
         data["user-id"] = userData.userData.$id;
         data.userName = userData.userData.name;
+        data.userLabel = userData.userData.labels[0];
         const dbPost = await appwriteService.createPost({ ...data });
         
         if (dbPost) {
