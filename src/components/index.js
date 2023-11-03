@@ -17,4 +17,5 @@ import AllPosts from '../pages/AllPosts';
 import EditPost from '../pages/EditPost';
 import Home from '../pages/Home';
 import Post from '../pages/Post';
-export { Header, Footer, Container, Logo, LogoutBtn, Button, Input, RTE, Login, Signup, PostCard, PostForm, AuthLayout, Select, AddPost, AllPosts, EditPost, Post, Home };
+import UserLogo from './UserLogo';
+export { Header, Footer, Container, Logo, LogoutBtn, Button, Input, RTE, Login, Signup, PostCard, PostForm, AuthLayout, Select, AddPost, AllPosts, EditPost, Post, Home, UserLogo };

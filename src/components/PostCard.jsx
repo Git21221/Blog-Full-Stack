@@ -6,6 +6,7 @@ import parse from 'html-react-parser'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHeart, faComment } from '@fortawesome/free-regular-svg-icons'
 import { faShare } from '@fortawesome/free-solid-svg-icons'
+import UserLogo from './UserLogo'
 
 function PostCard({
   $id,
@@ -22,7 +23,9 @@ function PostCard({
     <div className='w-full bg-gray-200 rounded-md p-4 flex flex-col gap-3'>
       <div className="userDeatils text-2xl flex items-center gap-3 justify-between">
         <div className="user flex items-center justify-normal gap-3">
-          <span className="userImage"><img src="https://filestore.community.support.microsoft.com/api/images/0ce956b2-9787-4756-a580-299568810730?upload=true" alt="" width='40px' /></span>
+          <UserLogo
+          imageSource="https://filestore.community.support.microsoft.com/api/images/0ce956b2-9787-4756-a580-299568810730?upload=true"
+          />
           <span className='userName text-base'>{post.userName}</span>
           <span className="labels text-xs text-red-600">{post.userLabel}</span>
         </div>
