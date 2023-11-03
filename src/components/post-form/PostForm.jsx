@@ -46,7 +46,7 @@ function PostForm({ post }) {
         data["featured-image"] = fileId;
         data["user-id"] = userData.userData.$id;
         data.userName = userData.userData.name;
-        data.userLabel = userData.userData.labels[0] ? userData.labels[0] : null;
+        data.userLabel = userData.userData.labels[0] ? userData.userData.labels[0] : "ooooooo";
         const dbPost = await appwriteService.createPost({ ...data });
         
         if (dbPost) {
