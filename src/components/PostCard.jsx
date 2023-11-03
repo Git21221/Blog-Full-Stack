@@ -14,8 +14,8 @@ function PostCard({
   post,
 }) {
 
-  const userData = useSelector(state => state.auth.userData)
-  console.log(post);
+  // const userData = useSelector(state => state.auth.userData)
+  // console.log(post);
 
   return (
     // <Link to={`/post/${userData.userData.$id}`}>
@@ -53,7 +53,7 @@ function PostCard({
           className='px-2' />Share</span>
       </div>
     </div>
-    // </Link>
+    /* </Link> */
   )
 }
 
