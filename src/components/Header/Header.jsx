@@ -38,7 +38,7 @@ function Header() {
   ]
 
   return (
-    <header className='py-3 shadow-lg bg-gray-200 w-full rounded-md'>
+    <header className='py-3 shadow-lg bg-white w-full rounded-md'>
       <Container>
         <nav className='flex items-center justify-between max-w-5xl px-4'>
           <div className="mr-4">
@@ -55,11 +55,19 @@ function Header() {
                 </li>
               ) : null
             )}
-            {authStatus && (
+            {
+               authStatus && (
+                <li>
+                  <span className="userImage"><img src="https://filestore.community.support.microsoft.com/api/images/0ce956b2-9787-4756-a580-299568810730?upload=true" alt="" width='40px' /></span>
+                </li>
+              )
+            }
+            {/* temporarily replacing logout button with account  */}
+            {/* {authStatus && (
               <li>
                 <LogoutBtn />
               </li>
-            )}
+            )} */}
           </ul>
         </nav>
       </Container>

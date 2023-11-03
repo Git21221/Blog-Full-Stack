@@ -19,7 +19,7 @@ function PostCard({
 
   return (
     // <Link to={`/post/${userData.userData.$id}`}>
-    <div className='w-full bg-gray-300 rounded-md p-4 flex flex-col gap-3'>
+    <div className='w-full bg-gray-200 rounded-md p-4 flex flex-col gap-3'>
       <div className="userDeatils text-2xl flex items-center gap-3 justify-between">
         <div className="user flex items-center justify-normal gap-3">
           <span className="userImage"><img src="https://filestore.community.support.microsoft.com/api/images/0ce956b2-9787-4756-a580-299568810730?upload=true" alt="" width='40px' /></span>
