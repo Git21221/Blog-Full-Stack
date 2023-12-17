@@ -25,6 +25,7 @@ function PostCard({
         <div className="user flex items-center justify-normal gap-3">
           <UserLogo
           imageSource="https://filestore.community.support.microsoft.com/api/images/0ce956b2-9787-4756-a580-299568810730?upload=true"
+          width="40px"
           />
           <span className='userName text-base'>{post.userName}</span>
           <span className="labels text-xs text-red-600">{post.userLabel}</span>

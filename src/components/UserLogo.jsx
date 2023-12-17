@@ -1,8 +1,8 @@
 import React from 'react'
 
-function UserLogo({imageSource}) {
+function UserLogo({imageSource, width}) {
   return (
-    <span className="userImage"><img src={imageSource} alt="" width='40px' /></span>
+    <span className="userImage"><img src={imageSource} alt="" width={width} /></span>
   )
 }
 

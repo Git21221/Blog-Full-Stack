@@ -19,7 +19,7 @@ function PostForm({ post }) {
 
   const navigate = useNavigate();
   const userData = useSelector(state => state.auth.userData)
-  console.log(userData);
+  // console.log(userData);
 
 
   const submit = async (data) => {
@@ -46,7 +46,7 @@ function PostForm({ post }) {
         data["featured-image"] = fileId;
         data["user-id"] = userData.userData.$id;
         data.userName = userData.userData.name;
-        data.userLabel = userData.userData.labels[0] ? userData.userData.labels[0] : "ooooooo";
+        data.userLabel = userData.userData.labels[0] ? userData.userData.labels[0] : "";
         const dbPost = await appwriteService.createPost({ ...data });
         
         if (dbPost) {

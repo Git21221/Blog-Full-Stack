@@ -1,5 +1,5 @@
 import React from 'react'
-import { Container, Logo, LogoutBtn } from '../index'
+import { Container, Logo, LogoutBtn, UserLogo } from '../index'
 import { Link } from 'react-router-dom'
 import { useSelector } from 'react-redux/es/hooks/useSelector'
 import { useNavigate } from 'react-router-dom'
@@ -55,19 +55,22 @@ function Header() {
                 </li>
               ) : null
             )}
-            {
-               authStatus && (
-                <li>
-                  <span className="userImage"><img src="https://filestore.community.support.microsoft.com/api/images/0ce956b2-9787-4756-a580-299568810730?upload=true" alt="" width='40px' /></span>
-                </li>
-              )
-            }
-            {/* temporarily replacing logout button with account  */}
-            {/* {authStatus && (
+            {authStatus && (
               <li>
                 <LogoutBtn />
               </li>
-            )} */}
+            )}
+            {
+               authStatus && (
+                <li>
+                  <UserLogo 
+                  imageSource="https://filestore.community.support.microsoft.com/api/images/0ce956b2-9787-4756-a580-299568810730?upload=true"
+                  width="40px"
+                  />
+                </li>
+              )
+            }
+            
           </ul>
         </nav>
       </Container>
